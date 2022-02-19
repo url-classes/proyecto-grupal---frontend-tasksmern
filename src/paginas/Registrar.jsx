@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Alerta from "../components/Alerta";
+import axios from "axios";
 
 const Registrar = () => {
   const [nombre, setNombre] = useState("");
@@ -30,10 +31,27 @@ const Registrar = () => {
       });
       return;
     }
-    setAlerta({})
-    console.log("Todo bien")
-  };
+    setAlerta({});
 
+    
+
+    // Crear el usuario de la APi
+    try {
+      const url = "http://localhost:8000/api/usuarios";
+
+      await axios.post(url, { nombre, email, password });
+
+      setAlerta({
+        msg: "Creado Correctamente, revisa tu email",
+        error: false,
+      });
+    } catch (error) {
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true,
+      });
+    }
+  };
 
   const { msg } = alerta;
 
