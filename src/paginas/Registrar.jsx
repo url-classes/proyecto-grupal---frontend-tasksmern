@@ -37,7 +37,7 @@ const Registrar = () => {
 
     // Crear el usuario de la APi
     try {
-      const url = "http://localhost:8000/api/usuarios";
+      const url = `${import.meta.env.VITE_BACKEND_URL}/api/usuarios`;
 
       await axios.post(url, { nombre, email, password });
 
