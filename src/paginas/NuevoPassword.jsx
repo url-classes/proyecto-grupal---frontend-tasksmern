@@ -5,3 +5,5 @@ export const NuevoPassword = () => {
     <div>Desde Nuevo password</div>
   )
 }
+
+export default NuevoPassword;
