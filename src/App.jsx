@@ -9,7 +9,7 @@ import ConfirmarCuenta from "./paginas/ConfirmarCuenta";
 import NuevoPassword from "./paginas/NuevoPassword";
 import Date from "./paginas/Date";
 import { AuthProvider } from "./context/AuthProvider";
-import  PanelAdministrativo  from "./paginas/PanelAdministrativo";
+import  Proyectos  from "./paginas/Proyectos";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           </Route>
 
           <Route path="/admin" element={<RutaProtegida />}>
-            <Route index element={<PanelAdministrativo />}/>
+             <Route index element={<Proyectos />}/>
 
           </Route>
         </Routes>
