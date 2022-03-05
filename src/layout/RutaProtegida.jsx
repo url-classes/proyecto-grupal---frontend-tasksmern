@@ -1,7 +1,9 @@
 import { Outlet, Navigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import Header from "../components/Header";
+//import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+
+import PrimarySearchAppBar from "../components/Header";
 
 const RutaProtegida = () => {
   const { auth, cargando } = useAuth();
@@ -13,9 +15,10 @@ const RutaProtegida = () => {
 
   return (
     <>
-      {auth ?  (
+      {auth._id ?  
+      (
         <div className="bg-gray-100">
-          <Header />
+          <PrimarySearchAppBar />
           <div className="md:flex md:min-h-screen">
             <Sidebar />
             <main className="p-10 flex-1">
