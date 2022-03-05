@@ -15,7 +15,8 @@ const RutaProtegida = () => {
 
   return (
     <>
-      {auth ?  (
+      {auth._id ?  
+      (
         <div className="bg-gray-100">
           <PrimarySearchAppBar />
           <div className="md:flex md:min-h-screen">

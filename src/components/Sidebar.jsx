@@ -4,6 +4,8 @@ import Badge from "@mui/material/Badge";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
+import useAuth from "../hooks/useAuth";
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -38,6 +40,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 
 const Sidebar = () => {
+  const { auth } = useAuth();
   return (
     <aside className="md:w-80 lg:w-56 px-5 py-10 bg-slate-500 text-white">
       <div className="md:flex md:justify-center ">
@@ -53,7 +56,7 @@ const Sidebar = () => {
         </Stack>
       </div>
 
-      <p className="text-xl font-bold  text-center">Taskmern</p>
+      <p className="text-xl font-bold  text-center">{auth.nombre}</p>
 
       <Link
         to="crear-proyecto"
