@@ -1,11 +1,15 @@
 import { useState, useEffect, createContext } from "react";
 import clienteAxios from "../config/axios";
+import { useNavigate } from 'react-router-dom'
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [cargando, setCargando] = useState(true);
   const [auth, setAuth] = useState({});
+
+  const navigate = useNavigate()
+
   useEffect(() => {
     const autenticarUsuario = async () => {
       const token = localStorage.getItem("token");
@@ -23,7 +27,9 @@ const AuthProvider = ({ children }) => {
       };
       try {
         const { data } = await clienteAxios("/usuarios/perfil", config);
+        console.log('desde authprovider')
         setAuth(data);
+        navigate('/admin');
       } catch (error) {
         console.log(error.response.data.msg);
         setAuth({});
