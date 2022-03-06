@@ -11,8 +11,10 @@ import Date from "./paginas/Date";
 import { AuthProvider } from "./context/AuthProvider";
 import  Proyectos  from "./paginas/Proyectos";
 //import PrimarySearchAppBar from "./components/panel";
-
+import CrearProyecto from "./paginas/CrearProyecto";
 import BadgeAvatars from "./paginas/Avatar";
+
+import EditarPerfil from "./paginas/EditarPerfil";
 
 function App() {
   return (
@@ -32,7 +34,8 @@ function App() {
 
           <Route path="/admin" element={<RutaProtegida />}>
              <Route index element={<Proyectos />}/>
-
+             <Route path="CrearProyecto" element={<CrearProyecto />}/> 
+             <Route path="EditarPerfil" element={<EditarPerfil />}/> 
           </Route>
         </Routes>
       </AuthProvider>
