@@ -12,11 +12,11 @@ import Menu from "@mui/material/Menu";
 
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
+import MessageIcon from '@mui/icons-material/Message';
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-
-import TaskAltIcon from "@mui/icons-material/TaskAlt";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddIcon from '@mui/icons-material/Add';
 import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
@@ -123,9 +123,9 @@ const PrimarySearchAppBar = () => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+        <IconButton size="large" aria-label="show 4 new messages" color="inherit">
           <Badge badgeContent={4} color="error">
-            <MailIcon />
+            <MessageIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
@@ -152,7 +152,7 @@ const PrimarySearchAppBar = () => {
           color="inherit"
         >
           <Badge >
-          <TaskAltIcon />
+          <AddCircleIcon />
           </Badge>
         </IconButton>
         <p>proyectos</p>
@@ -199,7 +199,9 @@ const PrimarySearchAppBar = () => {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            TaskMern
+            <Link to="../admin">
+              TaskMern
+            </Link>          
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -215,11 +217,11 @@ const PrimarySearchAppBar = () => {
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
-              aria-label="show 4 new mails"
+              aria-label="show 4 new notifications"
               color="inherit"
             >
               <Badge badgeContent={4} color="error">
-                <MailIcon />
+                <MessageIcon />
               </Badge>
             </IconButton>
 
@@ -239,13 +241,13 @@ const PrimarySearchAppBar = () => {
               color="inherit"
             >
                 <Badge>
-                <TaskAltIcon />
+                <AddCircleIcon/>
               </Badge>
              
             </IconButton>
 
             <Link
-              to="crear-proyecto"
+              to="CrearProyecto"
               className=" text-white uppercase
             font-bold block mt-3 text-center rounded-lg
             "

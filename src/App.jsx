@@ -11,7 +11,7 @@ import Date from "./paginas/Date";
 import { AuthProvider } from "./context/AuthProvider";
 import  Proyectos  from "./paginas/Proyectos";
 //import PrimarySearchAppBar from "./components/panel";
-
+import CrearProyecto from "./paginas/CrearProyecto";
 import BadgeAvatars from "./paginas/Avatar";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
 
           <Route path="/admin" element={<RutaProtegida />}>
              <Route index element={<Proyectos />}/>
-
+             <Route path="CrearProyecto" element={<CrearProyecto />}/> 
           </Route>
         </Routes>
       </AuthProvider>
