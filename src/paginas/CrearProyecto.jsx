@@ -11,8 +11,14 @@ import MobileDatePicker from "@mui/lab/MobileDatePicker";
 const CrearProyecto = () => {
   const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
 
+  const [valor, setValor] = React.useState(new Date("2014-08-18T21:11:54"));
+
   const handleChange = (newValue) => {
     setValue(newValue);
+  };
+
+  const handleChange2 = (newValue) => {
+    setValor(newValue);
   };
 
   return (
@@ -72,30 +78,31 @@ const CrearProyecto = () => {
           </label>
         </div>
 
-        <div className="relative z-0 mb-8 group">
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <Stack spacing={3}>
-              <DateTimePicker
-                label="Fecha de Inicio"
-                value={value}
-                onChange={handleChange}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </Stack>
-          </LocalizationProvider>
-        </div>
-
-        <div className="relative z-0 mb-8 group">
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <Stack spacing={3}>
-              <DateTimePicker
-                label="Fecha de Entrega"
-                value={value}
-                onChange={handleChange}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </Stack>
-          </LocalizationProvider>
+        <div className="grid xl:grid-cols-2 xl:gap-6 mt-9">
+          <div className="relative z-0 mb-6 w-full group">
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <Stack spacing={3}>
+                <DateTimePicker
+                  label="Fecha de Inicio"
+                  value={value}
+                  onChange={handleChange}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </Stack>
+            </LocalizationProvider>
+          </div>
+          <div className="relative z-0 mb-6 w-full group">
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <Stack spacing={3}>
+                <DateTimePicker
+                  label="Fecha de Entrega"
+                  value={valor}
+                  onChange={handleChange2}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </Stack>
+            </LocalizationProvider>
+          </div>
         </div>
 
         <button

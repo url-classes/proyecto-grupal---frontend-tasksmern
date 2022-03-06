@@ -12,12 +12,14 @@ import Menu from "@mui/material/Menu";
 
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MessageIcon from '@mui/icons-material/Message';
+import MessageIcon from "@mui/icons-material/Message";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import AddIcon from '@mui/icons-material/Add';
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router-dom";
+
+import useAuth from "../hooks/useAuth";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -60,6 +62,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const PrimarySearchAppBar = () => {
+  const { cerrarSesion } = useAuth();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -100,8 +104,12 @@ const PrimarySearchAppBar = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Link to="EditarPerfil">
+        {" "}
+        <MenuItem onClick={handleMenuClose}>Perfil</MenuItem>
+      </Link>
+
+      <MenuItem onClick={cerrarSesion}>Cerrar Sesión</MenuItem>
     </Menu>
   );
 
@@ -123,7 +131,11 @@ const PrimarySearchAppBar = () => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new messages" color="inherit">
+        <IconButton
+          size="large"
+          aria-label="show 4 new messages"
+          color="inherit"
+        >
           <Badge badgeContent={4} color="error">
             <MessageIcon />
           </Badge>
@@ -143,29 +155,18 @@ const PrimarySearchAppBar = () => {
         <p>Notifications</p>
       </MenuItem>
 
-      
-
       <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge >
-          <AddCircleIcon />
+          <Badge>
+            <AddCircleIcon />
           </Badge>
         </IconButton>
         <p>proyectos</p>
       </MenuItem>
-
-
-
-
-
-
-
-
-
 
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -199,9 +200,7 @@ const PrimarySearchAppBar = () => {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            <Link to="../admin">
-              TaskMern
-            </Link>          
+            <Link to="../admin">TaskMern</Link>
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -240,10 +239,9 @@ const PrimarySearchAppBar = () => {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-                <Badge>
-                <AddCircleIcon/>
+              <Badge>
+                <AddCircleIcon />
               </Badge>
-             
             </IconButton>
 
             <Link
