@@ -65,7 +65,7 @@ const Sidebar = () => {
       >
         {" "}
           <AddCircleIcon fontSize="small"/>
-          <span class="px-2">Nuevo Proyecto</span>
+          <span className="px-2">Nuevo Proyecto</span>
       </Link>
     </aside>
   );
