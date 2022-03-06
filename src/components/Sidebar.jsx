@@ -5,7 +5,7 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
 import useAuth from "../hooks/useAuth";
-
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -51,21 +51,21 @@ const Sidebar = () => {
             variant="dot"
             
           >
-            <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/31397287?v=4" sx={{ width: 80, height: 80 }}/>
+            <Avatar alt="Remy Sharp" src="" sx={{ width: 80, height: 80 }}/>
           </StyledBadge>
         </Stack>
       </div>
 
       <p className="text-xl font-bold  text-center">{auth.nombre}</p>
-
       <Link
-        to="crear-proyecto"
+        to="CrearProyecto"
         className="bg-indigo-600 w-full p-3 text-white uppercase
             font-bold block mt-5 text-center rounded-lg
             "
       >
         {" "}
-        Nuevo Proyecto
+          <AddCircleIcon fontSize="small"/>
+          <span className="px-2">Nuevo Proyecto</span>
       </Link>
     </aside>
   );
