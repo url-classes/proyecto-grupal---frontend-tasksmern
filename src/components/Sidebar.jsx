@@ -51,7 +51,7 @@ const Sidebar = () => {
             variant="dot"
             
           >
-            <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/31397287?v=4" sx={{ width: 80, height: 80 }}/>
+            <Avatar alt="Remy Sharp" src="" sx={{ width: 80, height: 80 }}/>
           </StyledBadge>
         </Stack>
       </div>
