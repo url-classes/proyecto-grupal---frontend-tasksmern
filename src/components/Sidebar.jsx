@@ -58,7 +58,7 @@ const Sidebar = () => {
 
       <p className="text-xl font-bold  text-center">{auth.nombre}</p>
       <Link
-        to="crear-proyecto"
+        to="CrearProyecto"
         className="bg-indigo-600 w-full p-3 text-white uppercase
             font-bold block mt-5 text-center rounded-lg
             "

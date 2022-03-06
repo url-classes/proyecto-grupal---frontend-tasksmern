@@ -199,7 +199,9 @@ const PrimarySearchAppBar = () => {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            TaskMern
+            <Link to="../admin">
+              TaskMern
+            </Link>          
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -245,7 +247,7 @@ const PrimarySearchAppBar = () => {
             </IconButton>
 
             <Link
-              to="crear-proyecto"
+              to="CrearProyecto"
               className=" text-white uppercase
             font-bold block mt-3 text-center rounded-lg
             "
