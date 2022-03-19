@@ -3,39 +3,74 @@ import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import TimePicker from "@mui/lab/TimePicker";
 import DateTimePicker from "@mui/lab/DateTimePicker";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
-import MobileDatePicker from "@mui/lab/MobileDatePicker";
+
+import useProyectos from "../hooks/useProyectos";
+import Alerta from "../components/Alerta";
 
 const CrearProyecto = () => {
-  const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
+  const [nombre, setNombre] = React.useState("");
+  const [descripcion, setDescripcion] = React.useState("");
+  const [cliente, setCliente] = React.useState("");
 
-  const [valor, setValor] = React.useState(new Date("2014-08-18T21:11:54"));
+  const [fechaEntrega, setFechaEntrega] = React.useState(new Date());
+
+  const [fechaInicio, setFechaInicio] = React.useState(new Date());
 
   const handleChange = (newValue) => {
-    setValue(newValue);
+    setFechaEntrega(newValue);
   };
 
   const handleChange2 = (newValue) => {
-    setValor(newValue);
+    setFechaInicio(newValue);
   };
 
+  const { mostrarAlerta, alerta, submitProyecto} = useProyectos();
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if ([nombre, descripcion, fechaEntrega, cliente].includes('')){ 
+      mostrarAlerta({
+        msg: 'Todos los campos son obligatorios',
+        error: true
+      })
+
+      return
+    }
+
+    // pasar los datos hacia el provaider
+    await submitProyecto({nombre, descripcion, fechaEntrega, fechaInicio, cliente})
+
+    setNombre('')
+    setDescripcion('')
+    setFechaEntrega('')
+    setCliente('')
+    setFechaEntrega(new Date())
+    setFechaInicio(new Date())
+  }
+
+  const { msg } = alerta
   return (
     <>
       <div>
-        <h1 className="text-4xl text-center md:text-4xl mb-8  ">
+        <h1 className="text-4xl text-center md:text-4xl mb-8 font-black ">
           Crear Proyecto
         </h1>
       </div>
-      <form className="border-4 border-opacity-30 px-3 py-5 md:border-4 border-slate-400 md:px-16 md:py-14 md:mx-28">
+      <form className="border-4 border-opacity-30 px-3 py-5 md:border-4 border-slate-400 md:px-16 md:py-14 md:mx-28"
+        onSubmit={handleSubmit}
+      >
+        {msg && <Alerta alerta={alerta} />}
         <div className="relative z-0 mb-6 w-full group">
           <input
             type="text"
             name="nombre"
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-            required
+            //required
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
           />
           <label
             htmlFor="nombre"
@@ -51,7 +86,9 @@ const CrearProyecto = () => {
             id="descripcion"
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-            required
+            //required
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
           />
           <label
             htmlFor="descripcion"
@@ -68,7 +105,9 @@ const CrearProyecto = () => {
             id="floating_repeat_password"
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-            required
+            //required
+            value={cliente}
+            onChange={(e) => setCliente(e.target.value)}
           />
           <label
             htmlFor="floating_repeat_password"
@@ -84,7 +123,7 @@ const CrearProyecto = () => {
               <Stack spacing={3}>
                 <DateTimePicker
                   label="Fecha de Inicio"
-                  value={value}
+                  value={fechaInicio}
                   onChange={handleChange}
                   renderInput={(params) => <TextField {...params} />}
                 />
@@ -96,7 +135,7 @@ const CrearProyecto = () => {
               <Stack spacing={3}>
                 <DateTimePicker
                   label="Fecha de Entrega"
-                  value={valor}
+                  value={fechaEntrega}
                   onChange={handleChange2}
                   renderInput={(params) => <TextField {...params} />}
                 />
@@ -107,9 +146,9 @@ const CrearProyecto = () => {
 
         <button
           type="submit"
-          className="text-white bg-indigo-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-20 py-2.5 text-center"
+          className="text-white bg-indigo-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-14 py-2.5 text-center"
         >
-          Enviar
+          Crear Proyecto
         </button>
       </form>
     </>
