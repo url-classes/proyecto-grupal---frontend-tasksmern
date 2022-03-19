@@ -54,7 +54,7 @@ const CrearProyecto = () => {
   return (
     <>
       <div>
-        <h1 className="text-4xl text-center md:text-4xl mb-8  ">
+        <h1 className="text-4xl text-center md:text-4xl mb-8 font-black ">
           Crear Proyecto
         </h1>
       </div>

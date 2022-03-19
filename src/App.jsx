@@ -17,6 +17,7 @@ import CrearProyecto from "./paginas/CrearProyecto";
 import BadgeAvatars from "./paginas/Avatar";
 
 import EditarPerfil from "./paginas/EditarPerfil";
+import Proyecto from "./paginas/Proyecto";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
               <Route index element={<Proyectos />} />
               <Route path="CrearProyecto" element={<CrearProyecto />} />
               <Route path="EditarPerfil" element={<EditarPerfil />} />
+              <Route path=":id" element={<Proyecto />} />
             </Route>
           </Routes>
         </ProyectosProvider>
