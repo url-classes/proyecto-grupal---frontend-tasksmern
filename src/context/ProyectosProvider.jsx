@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 import clienteAxios from "../config/axios";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const ProyectosContext = createContext();
 
@@ -9,6 +10,8 @@ const ProyectosProvider = ({ children }) => {
   const [alerta, setAlerta] = useState({});
   const [proyecto, setProyecto] = useState({});
   const [cargando, setCargando] = useState(false);
+
+  const { auth } = useAuth();
 
   const navegate = useNavigate();
 
@@ -32,7 +35,7 @@ const ProyectosProvider = ({ children }) => {
       }
     };
     obtenerProyectos();
-  }, []);
+  }, [auth]);
 
   const mostrarAlerta = (alerta) => {
     setAlerta(alerta);
