@@ -6,7 +6,7 @@ import PreviewProyecto from "../components/PreviewProyecto";
 
 const Proyectos = () => {
 
-  const { proyectos } = useProyectos();
+  const { proyectos } = useProyectos({});
   console.log(proyectos)
  
   return (
