@@ -18,11 +18,11 @@ const CrearProyecto = () => {
   const [fechaInicio, setFechaInicio] = React.useState(new Date());
 
   const handleChange = (newValue) => {
-    setFechaEntrega(newValue);
+    setFechaInicio(newValue);
   };
 
   const handleChange2 = (newValue) => {
-    setFechaInicio(newValue);
+    setFechaEntrega(newValue);
   };
 
   const { mostrarAlerta, alerta, submitProyecto} = useProyectos();

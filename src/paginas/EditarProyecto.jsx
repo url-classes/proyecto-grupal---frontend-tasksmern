@@ -20,12 +20,12 @@ const EditarProyecto = () => {
   return (
     <>
       <h1 className="font-black text-4xl">Editar Proyecto: {nombre}</h1>
-      <div className=" md:grid md:grid-cols-1 mt-12 gap-10 p-5 items-center">
-        <div className="">
+      <div className=" grid grid-cols-3 gap-4 mt-16">
+        <div className="md:col-span-2 col-span-3">
           <CrearProyecto />
         </div>
 
-        <div className="flex justify-center img-edit ">
+        <div className="md:col-span-1 col-span-3">
           <img className="" src={edit} />
         </div>
       </div>
