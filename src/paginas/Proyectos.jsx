@@ -11,9 +11,9 @@ const Proyectos = () => {
  
   return (
     <>
-      <h1 className="text-4xl text-center font-black">TUS PROYECTOS</h1>
+      <h1 className="text-4xl text-center font-black mb-4">TUS PROYECTOS</h1>
 
-      <div className="bg-white shadow mt-10 rounded-lg ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 xl:gap-5">
         {proyectos.length ? 
         proyectos.map(proyecto => (
            <PreviewProyecto
