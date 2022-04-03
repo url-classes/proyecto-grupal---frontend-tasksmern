@@ -1,12 +1,17 @@
 import { useState, useEffect, createContext } from "react";
 import clienteAxios from "../config/axios";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const ProyectosContext = createContext();
 
 const ProyectosProvider = ({ children }) => {
   const [proyectos, setProyectos] = useState([]);
-  const [alerta, setAlerta] = useState([]);
+  const [alerta, setAlerta] = useState({});
+  const [proyecto, setProyecto] = useState({});
+  const [cargando, setCargando] = useState(false);
+
+  const { auth } = useAuth();
 
   const navegate = useNavigate();
 
@@ -23,14 +28,14 @@ const ProyectosProvider = ({ children }) => {
           },
         };
 
-        const {data} = await clienteAxios('/proyectos', config)
-        setProyectos(data)
+        const { data } = await clienteAxios("/proyectos", config);
+        setProyectos(data);
       } catch (error) {
         console.log(error);
       }
     };
     obtenerProyectos();
-  }, []);
+  }, [auth]);
 
   const mostrarAlerta = (alerta) => {
     setAlerta(alerta);
@@ -52,7 +57,7 @@ const ProyectosProvider = ({ children }) => {
         },
       };
       const { data } = await clienteAxios.post("/proyectos", proyecto, config);
-      setProyectos([...proyectos, data])
+      setProyectos([...proyectos, data]);
 
       setAlerta({
         msg: "Proyecto creado correctamente",
@@ -68,6 +73,28 @@ const ProyectosProvider = ({ children }) => {
     }
   };
 
+  const obtenerProyecto = async (id) => {
+    setCargando(true)
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const { data } = await clienteAxios(`/proyectos/${id}`, config )
+      setProyecto(data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setCargando(false)
+    }
+  };
+
   return (
     <ProyectosContext.Provider
       value={{
@@ -75,6 +102,9 @@ const ProyectosProvider = ({ children }) => {
         mostrarAlerta,
         alerta,
         submitProyecto,
+        obtenerProyecto,
+        proyecto,
+        cargando,
       }}
     >
       {children}
