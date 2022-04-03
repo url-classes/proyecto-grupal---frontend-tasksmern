@@ -6,7 +6,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 
 import useProyectos from "../hooks/useProyectos";
-import Alerta from "../components/Alerta";
+import Alerta from "./Alerta";
 
 const CrearProyecto = () => {
   const [nombre, setNombre] = React.useState("");
@@ -53,11 +53,7 @@ const CrearProyecto = () => {
   const { msg } = alerta
   return (
     <>
-      <div>
-        <h1 className="text-4xl text-center md:text-4xl mb-8 font-black ">
-          Crear Proyecto
-        </h1>
-      </div>
+      
       <form className="bg-white border-4 border-opacity-30 px-3 py-5 md:border-4 border-slate-400 md:px-16 md:py-14 md:mx-28"
         onSubmit={handleSubmit}
       >
