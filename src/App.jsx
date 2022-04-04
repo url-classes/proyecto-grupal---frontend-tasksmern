@@ -20,6 +20,7 @@ import BadgeAvatars from "./paginas/Avatar";
 import EditarPerfil from "./paginas/EditarPerfil";
 import Proyecto from "./paginas/Proyecto";
 import EditarProyecto from "./paginas/EditarProyecto";
+import Perfil from "./paginas/Perfil";
 
 function App() {
   return (
@@ -44,7 +45,7 @@ function App() {
             <Route path="/admin" element={<RutaProtegida />}>
               <Route index element={<Proyectos />} />
               <Route path="CrearProyecto" element={<NuevoProyecto />} />
-              <Route path="EditarPerfil" element={<EditarPerfil />} />
+              <Route path="EditarPerfil" element={<Perfil />} />
               <Route path=":id" element={<Proyecto />} />
               <Route path="editar/:id" element={<EditarProyecto />} />
             </Route>

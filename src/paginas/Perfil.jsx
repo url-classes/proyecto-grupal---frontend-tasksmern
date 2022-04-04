@@ -1,14 +1,14 @@
-import CrearProyecto from "../components/CrearProyecto";
-import edit from "../img/2.svg";
+import EditarPerfil from "./EditarPerfil";
+import edit from "../img/3.svg";
 
-const NuevoProyecto = () => {
+const Perfil = () => {
   return (
     <>
-      <h1 className="text-4xl font-black">Crear Proyecto</h1>
+      <h1 className="text-4xl font-black">Editar Perfil</h1>
 
       <div className=" grid grid-cols-3 gap-4 mt-16">
         <div className="md:col-span-2 col-span-3">
-          <CrearProyecto />
+          <EditarPerfil />
         </div>
 
         <div className="md:col-span-1 col-span-3">
@@ -19,4 +19,4 @@ const NuevoProyecto = () => {
   );
 };
 
-export default NuevoProyecto;
+export default Perfil;

@@ -7,6 +7,10 @@ import DateTimePicker from "@mui/lab/DateTimePicker";
 
 import useProyectos from "../hooks/useProyectos";
 import Alerta from "./Alerta";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+
 
 const CrearProyecto = () => {
   const [nombre, setNombre] = React.useState("");
@@ -25,7 +29,20 @@ const CrearProyecto = () => {
     setFechaEntrega(newValue);
   };
 
-  const { mostrarAlerta, alerta, submitProyecto} = useProyectos();
+  const { mostrarAlerta, alerta, submitProyecto, proyecto} = useProyectos();
+
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id) {
+      setNombre(proyecto.nombre)
+      setDescripcion(proyecto.descripcion)
+      setCliente(proyecto.cliente)
+      setFechaEntrega(proyecto.fechaEntrega)
+      setFechaInicio(proyecto.fechaInicio)
+    } 
+  }, [params])
 
   const handleSubmit = async e => {
     e.preventDefault();
