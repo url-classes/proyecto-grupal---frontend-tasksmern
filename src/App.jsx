@@ -13,11 +13,14 @@ import { AuthProvider } from "./context/AuthProvider";
 import { ProyectosProvider } from "./context/ProyectosProvider";
 import Proyectos from "./paginas/Proyectos";
 //import PrimarySearchAppBar from "./components/panel";
-import CrearProyecto from "./paginas/CrearProyecto";
+//import CrearProyecto from "./paginas/CrearProyecto";
+import NuevoProyecto from "./paginas/NuevoProyecto";
 import BadgeAvatars from "./paginas/Avatar";
 
 import EditarPerfil from "./paginas/EditarPerfil";
 import Proyecto from "./paginas/Proyecto";
+import EditarProyecto from "./paginas/EditarProyecto";
+import Perfil from "./paginas/Perfil";
 
 function App() {
   return (
@@ -41,9 +44,10 @@ function App() {
 
             <Route path="/admin" element={<RutaProtegida />}>
               <Route index element={<Proyectos />} />
-              <Route path="CrearProyecto" element={<CrearProyecto />} />
-              <Route path="EditarPerfil" element={<EditarPerfil />} />
+              <Route path="CrearProyecto" element={<NuevoProyecto />} />
+              <Route path="EditarPerfil" element={<Perfil />} />
               <Route path=":id" element={<Proyecto />} />
+              <Route path="editar/:id" element={<EditarProyecto />} />
             </Route>
           </Routes>
         </ProyectosProvider>

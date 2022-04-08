@@ -53,7 +53,7 @@ const Proyecto = () => {
         </svg>
 
         <Link
-          to={`/proyectos/editar/${params.id}`}
+          to={`/admin/editar/${params.id}`}
           className="uppercase font-bold"
         >
           Editar

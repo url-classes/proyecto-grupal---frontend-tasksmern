@@ -1,11 +1,7 @@
 const EditarPerfil = () => {
   return (
     <>
-      <div>
-        <h1 className="text-4xl text-center md:text-4xl mb-8  ">
-          Editar Perfil
-        </h1>
-      </div>
+      
       <form className="bg-white border-4 border-opacity-30 px-3 py-5 md:border-4 border-slate-400 md:px-16 md:py-14 md:mx-28">
         <div className="grid xl:grid-cols-2 xl:gap-6 mt-9">
           <div className="relative z-0 mb-6 w-full group">
