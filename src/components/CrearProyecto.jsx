@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 
 
 const CrearProyecto = () => {
+  const [id, setId] = React.useState(null);
   const [nombre, setNombre] = React.useState("");
   const [descripcion, setDescripcion] = React.useState("");
   const [cliente, setCliente] = React.useState("");
@@ -36,10 +37,11 @@ const CrearProyecto = () => {
 
   useEffect(() => {
     if (params.id) {
+      setId(proyecto._id)
       setNombre(proyecto.nombre)
       setDescripcion(proyecto.descripcion)
       setCliente(proyecto.cliente)
-      setFechaEntrega(proyecto.fechaEntrega)
+      setFechaEntrega(proyecto.fechaEntrega?.split('T')[0])
       setFechaInicio(proyecto.fechaInicio)
     } 
   }, [params])
@@ -57,8 +59,8 @@ const CrearProyecto = () => {
     }
 
     // pasar los datos hacia el provaider
-    await submitProyecto({nombre, descripcion, fechaEntrega, fechaInicio, cliente})
-
+    await submitProyecto({id, nombre, descripcion, fechaEntrega, fechaInicio, cliente})
+    setId(null)
     setNombre('')
     setDescripcion('')
     setFechaEntrega('')
@@ -157,12 +159,12 @@ const CrearProyecto = () => {
           </div>
         </div>
 
-        <button
+        <input
           type="submit"
+          value={id ? 'Actualizar Proyecto': 'Crear Proyecto'}
           className="text-white bg-indigo-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-14 py-2.5 text-center"
-        >
-          Crear Proyecto
-        </button>
+        >      
+        </input>
       </form>
     </>
   );
