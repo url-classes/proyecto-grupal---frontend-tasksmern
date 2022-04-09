@@ -43,7 +43,8 @@ const Sidebar = () => {
   const { auth } = useAuth();
   return (
     <aside className=" px-5 py-10 bg-slate-500 text-white">
-      <div className="md:flex md:justify-center ">
+      <div className="text-sm px-5 py-3 w-full md:w-auto rounded-lg uppercase font-bold
+       text-white text-center mt-5 flex gap-2 items-center justify-center">
         <Stack direction="row" spacing={2}>
           <StyledBadge
             overlap="circular"
