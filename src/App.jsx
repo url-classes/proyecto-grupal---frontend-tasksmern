@@ -21,6 +21,7 @@ import EditarPerfil from "./paginas/EditarPerfil";
 import Proyecto from "./paginas/Proyecto";
 import EditarProyecto from "./paginas/EditarProyecto";
 import Perfil from "./paginas/Perfil";
+import CambiarPassword from "./paginas/CambiarPassword";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               <Route index element={<Proyectos />} />
               <Route path="CrearProyecto" element={<NuevoProyecto />} />
               <Route path="EditarPerfil" element={<Perfil />} />
+              <Route path="Cambiar-Password" element={<CambiarPassword />} />
               <Route path=":id" element={<Proyecto />} />
               <Route path="editar/:id" element={<EditarProyecto />} />
             </Route>
