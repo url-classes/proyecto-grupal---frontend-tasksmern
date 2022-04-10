@@ -1,12 +1,11 @@
 import EditarPerfil from "./EditarPerfil";
-import edit from "../img/3.svg";
-import useAuth from "../hooks/useAuth";
+import AdminNav from "../components/AdminNav";
 
 const Perfil = () => {
   return (
     <>
-      <h1 className="text-4xl font-black">Editar Perfil</h1>
-
+      <AdminNav />
+    
       <EditarPerfil />
     </>
   );
