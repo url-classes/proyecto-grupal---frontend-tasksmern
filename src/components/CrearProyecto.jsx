@@ -6,9 +6,14 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 
 import useProyectos from "../hooks/useProyectos";
-import Alerta from "../components/Alerta";
+import Alerta from "./Alerta";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+
 
 const CrearProyecto = () => {
+  const [id, setId] = React.useState(null);
   const [nombre, setNombre] = React.useState("");
   const [descripcion, setDescripcion] = React.useState("");
   const [cliente, setCliente] = React.useState("");
@@ -18,14 +23,28 @@ const CrearProyecto = () => {
   const [fechaInicio, setFechaInicio] = React.useState(new Date());
 
   const handleChange = (newValue) => {
-    setFechaEntrega(newValue);
-  };
-
-  const handleChange2 = (newValue) => {
     setFechaInicio(newValue);
   };
 
-  const { mostrarAlerta, alerta, submitProyecto} = useProyectos();
+  const handleChange2 = (newValue) => {
+    setFechaEntrega(newValue);
+  };
+
+  const { mostrarAlerta, alerta, submitProyecto, proyecto} = useProyectos();
+
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id) {
+      setId(proyecto._id)
+      setNombre(proyecto.nombre)
+      setDescripcion(proyecto.descripcion)
+      setCliente(proyecto.cliente)
+      setFechaEntrega(proyecto.fechaEntrega?.split('T')[0])
+      setFechaInicio(proyecto.fechaInicio)
+    } 
+  }, [params])
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -40,8 +59,8 @@ const CrearProyecto = () => {
     }
 
     // pasar los datos hacia el provaider
-    await submitProyecto({nombre, descripcion, fechaEntrega, fechaInicio, cliente})
-
+    await submitProyecto({id, nombre, descripcion, fechaEntrega, fechaInicio, cliente})
+    setId(null)
     setNombre('')
     setDescripcion('')
     setFechaEntrega('')
@@ -53,11 +72,7 @@ const CrearProyecto = () => {
   const { msg } = alerta
   return (
     <>
-      <div>
-        <h1 className="text-4xl text-center md:text-4xl mb-8 font-black ">
-          Crear Proyecto
-        </h1>
-      </div>
+      
       <form className="bg-white border-4 border-opacity-30 px-3 py-5 md:border-4 border-slate-400 md:px-16 md:py-14 md:mx-28"
         onSubmit={handleSubmit}
       >
@@ -144,12 +159,12 @@ const CrearProyecto = () => {
           </div>
         </div>
 
-        <button
+        <input
           type="submit"
+          value={id ? 'Actualizar Proyecto': 'Crear Proyecto'}
           className="text-white bg-indigo-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-14 py-2.5 text-center"
-        >
-          Crear Proyecto
-        </button>
+        >      
+        </input>
       </form>
     </>
   );
