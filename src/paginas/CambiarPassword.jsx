@@ -2,6 +2,7 @@ import AdminNav from "../components/AdminNav";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import Alerta from "../components/Alerta";
+import { useNavigate } from "react-router-dom";
 
 const CambiarPassword = () => {
   const { guardarPassword } = useAuth();
@@ -10,6 +11,7 @@ const CambiarPassword = () => {
     pwd_actual: "",
     pwd_nuevo: "",
   });
+  const navegate = useNavigate();
 
   const handleSumit = async (e) => {
     e.preventDefault();
@@ -30,6 +32,9 @@ const CambiarPassword = () => {
       const respuesta = await guardarPassword(password);
 
       setAlerta(respuesta);
+      setTimeout(() => {
+        setAlerta({});
+      }, 3000);
     }
   };
 

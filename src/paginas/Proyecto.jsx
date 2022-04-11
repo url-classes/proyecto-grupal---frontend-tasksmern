@@ -1,16 +1,16 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import useProyectos from "../hooks/useProyectos";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ModalFormularioTarea from "../components/ModalFormularioTarea";
+import ModalEliminarTarea from "../components/ModalEliminarTarea";
 import Tarea from "../components/Tarea";
 const Proyecto = () => {
   const params = useParams();
   //console.log(params)
 
   const { obtenerProyecto, proyecto, cargando, handleModalTarea } = useProyectos();
-  const [modal, setModal] = useState(false)
   useEffect(() => {
     obtenerProyecto(params.id);
   }, []);
@@ -83,10 +83,8 @@ const Proyecto = () => {
         }
       </div>
 
-      <ModalFormularioTarea
-      modal = {modal}
-      setModal={setModal}
-      />
+      <ModalFormularioTarea/>
+      <ModalEliminarTarea />
     </>
   );
 };

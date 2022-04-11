@@ -8,34 +8,65 @@ import { useParams } from "react-router-dom";
 const PRIORIDAD = ["Baja", "Media", "Alta"];
 
 const ModalFormularioTarea = () => {
+  const [id, setId] = useState('')
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [fechaEntrega, setFechaEntrega] = useState("");
   const [prioridad, setPrioridad] = useState("");
 
-  const params = useParams()
+  const params = useParams();
 
+  const {
+    modalFormlarioTarea,
+    handleModalTarea,
+    mostrarAlerta,
+    alerta,
+    sumitTarea,
+    tarea,
+  } = useProyectos();
 
-  const { modalFormlarioTarea, handleModalTarea, mostrarAlerta, alerta, sumitTarea } = useProyectos();
+  useEffect(() => {
+    if (tarea?._id) {
+      setId(tarea._id);
+      setNombre(tarea.nombre);
+      setDescripcion(tarea.descripcion);
+      setFechaEntrega(tarea.fechaEntrega?.split('T')[0]);
+      setPrioridad(tarea.prioridad)
+      return;
+    }
+    setId("");
+    setNombre("");
+    setDescripcion("");
+    setPrioridad("");
+    setFechaEntrega("");
+  }, [tarea]);
 
-  const handleSumbit = async e => {
+  const handleSumbit = async (e) => {
     e.preventDefault();
 
-    if ([nombre, descripcion, prioridad, fechaEntrega].includes('')) {
+    if ([nombre, descripcion, prioridad, fechaEntrega].includes("")) {
       mostrarAlerta({
-        msg: 'Todos los campos son obligarios',
-        error: true
-      })
-      return
+        msg: "Todos los campos son obligarios",
+        error: true,
+      });
+      return;
     }
-    await sumitTarea({nombre, descripcion, fechaEntrega, prioridad, proyecto: params.id})
-    setNombre('')
-    setDescripcion('')
-    setPrioridad('')
-    setFechaEntrega('')
-  }
+    await sumitTarea({
+      id,
+      nombre,
+      descripcion,
+      fechaEntrega,
+      prioridad,
+      proyecto: params.id,
+    });
+    setId("");
+    setNombre("");
+    setDescripcion("");
+    setPrioridad("");
+    setFechaEntrega("");
+  };
 
-  const {msg} = alerta
+  const { msg } = alerta;
 
   return (
     <Transition.Root show={modalFormlarioTarea} as={Fragment}>
@@ -103,12 +134,10 @@ const ModalFormularioTarea = () => {
                     as="h3"
                     className="text-lg leading-6 font-bold text-gray-900"
                   >
-                    Crear Tarea
+                    {id ? 'Editar Tarea' : 'Crear Tarea'}
                   </Dialog.Title>
                   {msg && <Alerta alerta={alerta} />}
-                  <form 
-                  onSubmit={handleSumbit}
-                  className="my-10">
+                  <form onSubmit={handleSumbit} className="my-10">
                     <div className="mb-5">
                       <label
                         className="text-gray-700 uppercase
@@ -185,12 +214,12 @@ const ModalFormularioTarea = () => {
                         ))}
                       </select>
                     </div>
-                    <input 
-                    type="submit"
-                    className="bg-sky-600 hover:bg-sky-700 w-full
+                    <input
+                      type="submit"
+                      className="bg-sky-600 hover:bg-sky-700 w-full
                     p-3 text-white uppercase font-bold
                     cursor-pointer transition-colors rounded"
-                    value="Crear Tarea"
+                      value={id ? 'Guardar Cambios': 'Crear Tarea'}
                     />
                   </form>
                 </div>

@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import Alerta from "../components/Alerta";
 
+
 const EditarPerfil = () => {
   const { auth, setAuth, actualizarPerfil } = useAuth();
   const [perfil, setPerfil] = useState({});
   const [alerta, setAlerta] = useState({});
+
 
 
   useEffect(() => {
@@ -25,6 +27,9 @@ const EditarPerfil = () => {
     const resultado = await actualizarPerfil(perfil);
     setAuth(perfil)
     setAlerta(resultado);
+    setTimeout(() => {
+      setAlerta({});
+    }, 3000);
   };
 
   const { msg } = alerta;
