@@ -3,11 +3,11 @@ import useAuth from "../hooks/useAuth";
 import Alerta from "../components/Alerta";
 
 const EditarPerfil = () => {
-  const { auth, actualizarPerfil } = useAuth();
+  const { auth, setAuth, actualizarPerfil } = useAuth();
   const [perfil, setPerfil] = useState({});
   const [alerta, setAlerta] = useState({});
 
-  
+
   useEffect(() => {
     setPerfil(auth);
   }, [auth]);
@@ -23,6 +23,7 @@ const EditarPerfil = () => {
       });
     }
     const resultado = await actualizarPerfil(perfil);
+    setAuth(perfil)
     setAlerta(resultado);
   };
 
