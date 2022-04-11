@@ -73,7 +73,7 @@ const CrearProyecto = () => {
   return (
     <>
       
-      <form className="bg-white border-4 border-opacity-30 px-3 py-5 md:border-4 border-slate-400 md:px-16 md:py-14 md:mx-28"
+      <form className="bg-white border-4 border-opacity-30 px-3 py-5 md:border-4 border-slate-400 "
         onSubmit={handleSubmit}
       >
         {msg && <Alerta alerta={alerta} />}
