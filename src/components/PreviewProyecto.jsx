@@ -33,12 +33,15 @@ const PreviewProyecto = ({ proyecto }) => {
           </div>
         </div>
       </div>
-      <div className="grid content-center h-16">
+      <div className="grid h-32 content-between">
         <p className="pt-2 text-lg text-gray-600">
           {contenido}
         </p>
+        <p className="text-base text-cyan-700">
+          Propietario
+        </p>
       </div>
-      <hr className="border-slate-900 border-opacity-20 mt-4 mb-2 col-span-2"></hr>
+      <hr className="border-slate-900 border-opacity-20 mt-0 mb-2 col-span-2"></hr>
       <div className="grid grid-cols-2 gap-2">
         <div className="px-1 text-base md:text-sm">
           Fecha inicio
