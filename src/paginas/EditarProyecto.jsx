@@ -66,7 +66,7 @@ const EditarProyecto = () => {
         </div>
       </div>
 
-      <div className=" grid grid-cols-3 gap-4 mt-16">
+      <div className=" grid grid-cols-3 gap-4 mt-16 items-center">
         <div className="md:col-span-2 col-span-3">
           <CrearProyecto />
         </div>
