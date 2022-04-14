@@ -9,6 +9,7 @@ const FormularioColaborador = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
 
     if (email === "") {
       mostrarAlerta({

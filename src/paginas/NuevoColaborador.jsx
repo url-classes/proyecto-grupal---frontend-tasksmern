@@ -3,6 +3,7 @@ import FormularioColaborador from "../components/FormularioColaborador";
 import useProyectos from "../hooks/useProyectos";
 import { useParams } from "react-router-dom";
 import Alerta from "../components/Alerta";
+import Spinner from "../components/Spinner";
 
 const NuevoColaborador = () => {
   const {
@@ -19,6 +20,8 @@ const NuevoColaborador = () => {
     obtenerProyecto(params.id);
   }, []);
 
+  console.log(colaborador)
+
   if (!proyecto?._id) return <Alerta alerta={alerta} />;
   return (
     <>
@@ -31,7 +34,9 @@ const NuevoColaborador = () => {
       </div>
 
       {cargando ? (
-        <p className="text-center">cargando...</p>
+       
+          <Spinner />
+      
       ) : (
         colaborador?._id && (
           <div className="flex justify-center mt-10">
