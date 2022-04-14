@@ -22,6 +22,7 @@ import Proyecto from "./paginas/Proyecto";
 import EditarProyecto from "./paginas/EditarProyecto";
 import Perfil from "./paginas/Perfil";
 import CambiarPassword from "./paginas/CambiarPassword";
+import NuevoColaborador from "./paginas/NuevoColaborador";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             <Route path="/admin" element={<RutaProtegida />}>
               <Route index element={<Proyectos />} />
               <Route path="CrearProyecto" element={<NuevoProyecto />} />
+              <Route path="nuevo-colaborador/:id" element={<NuevoColaborador />} />
               <Route path="EditarPerfil" element={<Perfil />} />
               <Route path="Cambiar-Password" element={<CambiarPassword />} />
               <Route path=":id" element={<Proyecto />} />
