@@ -315,12 +315,17 @@ const ProyectosProvider = ({ children }) => {
       );
 
       setColaborador(data);
-      setAlerta({});
+      setTimeout(() => {
+        setAlerta({});
+      }, 3000);
     } catch (error) {
       setAlerta({
         msg: error.response.data.msg,
         error: true,
       });
+      setTimeout(() => {
+        setAlerta({});
+      }, 3000);
     } finally {
       setCargando(false);
     }
@@ -349,14 +354,15 @@ const ProyectosProvider = ({ children }) => {
       });
       setColaborador({});
 
-      setTimeout(() => {
-        setAlerta({});
-      }, 3000);
     } catch (error) {
       setAlerta({
         msg: error.response.data.msg,
         error: true,
       });
+
+      setTimeout(() => {
+        setAlerta({});
+      }, 7000);
     }
   };
   return (
