@@ -3,9 +3,10 @@ import useAuth from '../hooks/useAuth'
 import PersonIcon from '@mui/icons-material/Person';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import useProyectos from "../hooks/useProyectos";
 const PreviewProyecto = ({ proyecto }) => {
 
-
+  
   const { nombre, _id, cliente, colaboradores, descripcion, createdAt, fechaEntrega } = proyecto;
   let cantidadColaboradores = colaboradores.length
   cantidadColaboradores = colaboradoresCantidad(cantidadColaboradores)
@@ -38,7 +39,7 @@ const PreviewProyecto = ({ proyecto }) => {
           {contenido}
         </p>
         <p className="text-base text-cyan-700">
-          Propietario
+          {proyecto.creador}
         </p>
       </div>
       <hr className="border-slate-900 border-opacity-20 mt-0 mb-2 col-span-2"></hr>
@@ -58,7 +59,7 @@ const PreviewProyecto = ({ proyecto }) => {
   );
 };
 const colaboradoresCantidad = (cantidad) => {
-  cantidad += 1 //ya que mostraremos al creador del proyecto junto con los colaboradores
+  //ya que mostraremos al creador del proyecto junto con los colaboradores
   let cantidadColaboradores = []
   if(cantidad <= 3){
     for(let i = 0; i < cantidad; i++){
