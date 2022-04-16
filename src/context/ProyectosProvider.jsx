@@ -2,7 +2,7 @@ import { useState, useEffect, createContext } from "react";
 import clienteAxios from "../config/axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { id } from "date-fns/locale";
+
 
 const ProyectosContext = createContext();
 
