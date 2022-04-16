@@ -43,7 +43,7 @@ const PreviewProyecto = ({ proyecto }) => {
 
         {auth._id !== creador ?
           <p className="bg-slate-700 font-bold rounded-lg uppercase p-1 text-sm text-white">Colaborador</p>
-        : <p className="bg-green-600 font-bold rounded-lg uppercase p-1 text-sm text-white">Propietario</p>}
+        : <p className="bg-green-600 font-bold rounded-lg uppercase p-1 text-smm text-white">Propietario</p>}
       </div>
       <hr className="border-slate-900 border-opacity-20 mt-0 mb-2 col-span-2"></hr>
       <div className="grid grid-cols-2 gap-2">

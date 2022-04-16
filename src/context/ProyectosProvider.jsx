@@ -18,6 +18,7 @@ const ProyectosProvider = ({ children }) => {
   const [colaborador, setColaborador] = useState({});
   const [modalEliminarColaborador, setModalEliminarColaborador] =
     useState(false);
+  const [buscador, setBuscador] = useState(false);
   const { auth } = useAuth();
 
   const navegate = useNavigate();
@@ -144,7 +145,7 @@ const ProyectosProvider = ({ children }) => {
       setProyecto(data);
       setAlerta({});
     } catch (error) {
-      navegate('/proyectos')
+      navegate("/proyectos");
       setAlerta({
         msg: error.response.data.msg,
         error: true,
@@ -444,8 +445,8 @@ const ProyectosProvider = ({ children }) => {
       );
 
       const proyectoActualizado = { ...proyecto };
-      proyectoActualizado.tareas = proyectoActualizado.tareas.map((tareaState) =>
-        tareaState._id === data._id ? data : tareaState
+      proyectoActualizado.tareas = proyectoActualizado.tareas.map(
+        (tareaState) => (tareaState._id === data._id ? data : tareaState)
       );
 
       setProyecto(proyectoActualizado);
@@ -454,6 +455,10 @@ const ProyectosProvider = ({ children }) => {
     } catch (error) {
       console.log(error.response);
     }
+  };
+
+  const handleBuscador = () => {
+    setBuscador(!buscador);
   };
 
   return (
@@ -482,6 +487,8 @@ const ProyectosProvider = ({ children }) => {
         modalEliminarColaborador,
         eliminarColaborador,
         completarTarea,
+        buscador,
+        handleBuscador,
       }}
     >
       {children}

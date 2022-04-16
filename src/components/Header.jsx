@@ -20,6 +20,8 @@ import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router-dom";
 
 import useAuth from "../hooks/useAuth";
+import useProyectos from "../hooks/useProyectos";
+import Busqueda from "./Busqueda";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -62,6 +64,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const PrimarySearchAppBar = () => {
+  const { handleBuscador } = useProyectos();
   const { cerrarSesion } = useAuth();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -207,6 +210,7 @@ const PrimarySearchAppBar = () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+            onClick={handleBuscador}
               placeholder="Buscar Proyecto"
               inputProps={{ "aria-label": "search" }}
             />
@@ -245,14 +249,16 @@ const PrimarySearchAppBar = () => {
             </IconButton>
 
             <Link
-              to="CrearProyecto"
+            to='/admin'
               className=" text-white uppercase
             font-bold block mt-3 text-center rounded-lg
             "
             >
               {" "}
-              Nuevo Proyecto
+              Panel
             </Link>
+
+            <Busqueda />
 
             <IconButton
               size="large"
