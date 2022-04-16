@@ -1,9 +1,12 @@
 import { formatearFecha } from "../helpers/FormatearFecha";
 import useProyectos from "../hooks/useProyectos";
-
+import useAdmin from "../hooks/useAdmin";
 const Tarea = ({ tarea }) => {
-  const { handleEditarTarea, handleModalEliminarTarea } = useProyectos()
+  const { handleEditarTarea, handleModalEliminarTarea, completarTarea } = useProyectos();
   const { descripcion, nombre, prioridad, fechaEntrega, estado, _id } = tarea;
+
+  console.log("Esto es el ID de la tarea " + _id)
+  const admin = useAdmin();
   return (
     <div className="border-b p-5 flex justify-between items-center">
       <div>
@@ -14,38 +17,32 @@ const Tarea = ({ tarea }) => {
       </div>
 
       <div className="flex flex-col md:flex-row gap-2">
-        <button
-          className="bg-indigo-600 px-4 py-3 text-white uppercase
+        {admin && (
+          <button
+            className="bg-indigo-600 px-4 py-3 text-white uppercase
             font-bold text-sm rounded-lg"
             onClick={() => handleEditarTarea(tarea)}
-        >
-          
-          Editar
-        </button>
-
-        {estado ? (
-          <button
-            className="bg-sky-600 px-4 py-3 text-white uppercase
-            font-bold text-sm rounded-lg"
           >
-            Completa
-          </button>
-        ) : (
-          <button
-            className="bg-gray-600 px-4 py-3 text-white uppercase
-            font-bold text-sm rounded-lg"
-          >
-            Incompleta
+            Editar
           </button>
         )}
-
-        <button
-          className="bg-red-600 px-4 py-3 text-white uppercase
+       
+          <button
+            className= {` ${estado ? 'bg-green-600' : 'bg-gray-600'} px-4 py-3 text-white uppercase font-bold text-sm rounded-lg`}
+            onClick={() => completarTarea(_id)}
+          >
+            {estado ? 'Completa' : 'Incompleta'}
+          </button>
+     
+        {admin && (
+          <button
+            className="bg-red-600 px-4 py-3 text-white uppercase
             font-bold text-sm rounded-lg"
             onClick={() => handleModalEliminarTarea(tarea)}
-        >
-          Eliminar
-        </button>
+          >
+            Eliminar
+          </button>
+        )}
       </div>
     </div>
   );
