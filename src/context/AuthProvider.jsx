@@ -2,7 +2,6 @@ import { useState, useEffect, createContext } from "react";
 import clienteAxios from "../config/axios";
 import { useNavigate } from "react-router-dom";
 
-
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -30,7 +29,7 @@ const AuthProvider = ({ children }) => {
         const { data } = await clienteAxios("/usuarios/perfil", config);
         console.log("desde authprovider");
         setAuth(data);
-       // navigate("/admin");
+        // navigate("/admin");
       } catch (error) {
         console.log(error.response.data.msg);
         setAuth({});
@@ -89,7 +88,7 @@ const AuthProvider = ({ children }) => {
       const url = "/usuarios/actualizar-password";
       const { data } = await clienteAxios.put(url, datos, config);
       return {
-        msg: data.msg
+        msg: data.msg,
       };
     } catch (error) {
       return {
@@ -97,7 +96,7 @@ const AuthProvider = ({ children }) => {
         error: true,
       };
     }
-  }
+  };
 
   return (
     <AuthContext.Provider
