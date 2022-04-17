@@ -7,15 +7,13 @@ import Registrar from "./paginas/Registrar";
 import OlvidePassword from "./paginas/OlvidePassword";
 import ConfirmarCuenta from "./paginas/ConfirmarCuenta";
 import NuevoPassword from "./paginas/NuevoPassword";
-import Date from "./paginas/Date";
+
 import { AuthProvider } from "./context/AuthProvider";
 
 import { ProyectosProvider } from "./context/ProyectosProvider";
 import Proyectos from "./paginas/Proyectos";
-//import PrimarySearchAppBar from "./components/panel";
-//import CrearProyecto from "./paginas/CrearProyecto";
 import NuevoProyecto from "./paginas/NuevoProyecto";
-import BadgeAvatars from "./paginas/Avatar";
+
 
 import EditarPerfil from "./paginas/EditarPerfil";
 import Proyecto from "./paginas/Proyecto";
@@ -30,8 +28,7 @@ function App() {
       <AuthProvider>
         <ProyectosProvider>
           <Routes>
-            <Route path="Date" element={<Date />} />
-            <Route path="Avatar" element={<BadgeAvatars />} />
+            
 
             <Route path="/" element={<AuthLayout />}>
               <Route index element={<Login />} />
