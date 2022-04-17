@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DatePicker, TimePicker, DateTimePicker } from "@material-ui/pickers";
 import useProyectos from "../hooks/useProyectos";
 import PreviewProyecto from "../components/PreviewProyecto";
 import Alerta from "../components/Alerta";
 
 
+let socket;
 const Proyectos = () => {
 
   const { proyectos, alerta } = useProyectos({});

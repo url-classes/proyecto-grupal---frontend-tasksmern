@@ -64,8 +64,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const PrimarySearchAppBar = () => {
-  const { handleBuscador } = useProyectos();
+  const { handleBuscador, cerrarSesionProyectos } = useProyectos();
   const { cerrarSesion } = useAuth();
+
+  const handleCerrarSesion = () => {
+    cerrarSesion()
+    cerrarSesionProyectos()
+  }
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -112,7 +117,7 @@ const PrimarySearchAppBar = () => {
         <MenuItem onClick={handleMenuClose}>Perfil</MenuItem>
       </Link>
 
-      <MenuItem onClick={cerrarSesion}>Cerrar Sesión</MenuItem>
+      <MenuItem onClick={handleCerrarSesion}>Cerrar Sesión</MenuItem>
     </Menu>
   );
 
