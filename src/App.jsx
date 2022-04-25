@@ -21,18 +21,19 @@ import EditarProyecto from "./paginas/EditarProyecto";
 import Perfil from "./paginas/Perfil";
 import CambiarPassword from "./paginas/CambiarPassword";
 import NuevoColaborador from "./paginas/NuevoColaborador";
-
+import Chat from "./paginas/Chat";
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <ProyectosProvider>
           <Routes>
-            
+
 
             <Route path="/" element={<AuthLayout />}>
               <Route index element={<Login />} />
               <Route path="registrar" element={<Registrar />} />
+              <Route path="api/chat" element={<Chat />} />
               <Route path="olvide-password" element={<OlvidePassword />} />
               <Route
                 path="olvide-password/:token"
