@@ -21,7 +21,7 @@ import EditarProyecto from "./paginas/EditarProyecto";
 import Perfil from "./paginas/Perfil";
 import CambiarPassword from "./paginas/CambiarPassword";
 import NuevoColaborador from "./paginas/NuevoColaborador";
-
+import ChatPersonal from "./paginas/ChatPersonal";
 function App() {
   return (
     <BrowserRouter>
@@ -49,6 +49,7 @@ function App() {
               <Route path="Cambiar-Password" element={<CambiarPassword />} />
               <Route path=":id" element={<Proyecto />} />
               <Route path="editar/:id" element={<EditarProyecto />} />
+              <Route path="chat/:id" element={<ChatPersonal />} />
             </Route>
           </Routes>
         </ProyectosProvider>

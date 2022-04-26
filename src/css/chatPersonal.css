@@ -1,0 +1,13 @@
+.contenido {
+    height: 50vh;
+}
+
+@media only screen and (min-width: 768px) {
+    .contenido {
+        height: 80vh;
+    }
+}
+
+.input-texto:focus {
+    @apply bg-slate-100;
+}
