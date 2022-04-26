@@ -19,3 +19,8 @@
 .has-tooltip:hover .tooltip {
     @apply visible z-50
 }
+
+.box-chat {
+    background-color: #C2FFF9;
+    @apply w-fit rounded-lg;
+}

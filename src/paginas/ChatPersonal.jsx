@@ -17,13 +17,13 @@ const ChatPersonal = () => {
                 <EditIcon fontSize="large" />
             </div>
             <div className='my-3 md:my-5 bg-slate-200 contenido rounded-lg flex flex-col justify-end'>
-                <div className='px-2 md:px-4 flex has-tooltip'>
+                <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'>
                     <AccountCircleIcon />{ultimoMensaje(chat.ultimoMensaje)}
-                    <span class='tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-8'>{chat.ultimoMensaje.emisor.nombre}</span>
+                    <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-8'>{chat.ultimoMensaje.emisor.nombre}</span>
                 </div>
-                <input placeholder='Escribe un mensaje...' className='my-3 md:my-5 py-1 md:py-2 mx-2 md:mx-4 px-2 md:px-4 rounded-lg bg-slate-300 h-12 input-texto'></input>
+                <input placeholder='Escribe un mensaje...' className='my-1 md:my-2 py-1 md:py-2 mx-2 md:mx-4 px-2 md:px-4 rounded-lg bg-slate-300 h-12 input-texto'></input>
             </div>
-        </div>
+        </div >
     )
 }
 const obtenerChat = (id) => {
