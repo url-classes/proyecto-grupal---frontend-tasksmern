@@ -21,6 +21,6 @@
 }
 
 .box-chat {
-    background-color: #C2FFF9;
-    @apply w-fit rounded-lg;
+    background-color: #B4E197;
+    @apply w-fit rounded-lg my-1;
 }

@@ -102,7 +102,6 @@ const Sidebar = () => {
         </div>
         {chats.map(chat =>
           <div key={chat._id} className='box'>
-            {guardarInformacion(chat)}
             <Link to={`/admin/chat/${chat._id}`}>
               <h1 className="text-xl">{chat.nombreChat}</h1>
             </Link>
@@ -112,8 +111,4 @@ const Sidebar = () => {
     </aside>
   );
 };
-const guardarInformacion = (chat) => {
-  let chatGuardar = JSON.stringify(chat)
-  localStorage.setItem(chat._id, chatGuardar)
-}
 export default Sidebar;
