@@ -78,6 +78,7 @@ const ChatPersonal = () => {
             };
             enviarMensaje()
             document.getElementById('inputMensaje').value = ""
+            this.forceUpdate();
         }
     }
     return (
@@ -88,29 +89,30 @@ const ChatPersonal = () => {
                 {usuario.map((chat) => (
                     chat._id === params.id
                         ? chat.esChatGrupal === true
-                            ? <h1 className='text-3xl md:text-5xl'>{chat.nombreChat}</h1>
+                            ? <h1 className='text-3xl md:text-5xl' key={params.id}>{chat.nombreChat}</h1>
                             : chat.usuarios[0].nombre != auth.nombre
-                                ? <h1 className='text-3xl md:text-5xl'>{chat.usuarios[0].nombre}</h1>
-                                : <h1 className='text-3xl md:text-5xl'>{chat.usuarios[1].nombre}</h1>
+                                ? <h1 className='text-3xl md:text-5xl' key={params.id} >{chat.usuarios[0].nombre} </h1>
+                                : <h1 className='text-3xl md:text-5xl' key={params.id} >{chat.usuarios[1].nombre} </h1>
                         : null
                 ))}
 
                 <EditIcon fontSize="large" />
             </div>
-            <div className='my-3 md:my-5 bg-slate-200 contenido rounded-lg flex flex-col justify-end overflow-auto'>
-                <div className='overflow-y-auto'>
+            <div className='mt-3 md:mt-5 bg-slate-200 contenido rounded-lg flex flex-col justify-end'>
+                {/* overflow-y-auto */}
+                <div className='overflow-y-scroll'>
                     {chats.map((chat) => (
-                        <div>
+                        <div key={chat._id}>
                             {auth.nombre == chat.emisor.nombre
                                 ? <div className='flex justify-end'>
-                                    <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'>
+                                    <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'  >
                                         <AccountCircleIcon />{chat.contenido}
-                                        <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-emerald-500 -mt-8'>{chat.emisor.nombre}</span>
+                                        <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-emerald-500'>{chat.emisor.nombre}</span>
                                     </div>
                                 </div>
-                                : <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'>
+                                : <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'  >
                                     <AccountCircleIcon />{chat.contenido}
-                                    <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-emerald-500 -mt-8'>{chat.emisor.nombre}</span>
+                                    <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-emerald-500'>{chat.emisor.nombre}</span>
                                 </div>}
                         </div>
                     ))}
