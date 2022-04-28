@@ -3,7 +3,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import EditIcon from '@mui/icons-material/Edit';
 import '../css/chatPersonal.css'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import clienteAxios from "../config/axios";
 import useAuth from "../hooks/useAuth";
 const ChatPersonal = () => {
@@ -11,6 +11,7 @@ const ChatPersonal = () => {
     const [chats, setChats] = useState([])
     const [usuario, setUsuario] = useState([])
     const { auth } = useAuth();
+    const navigate = useNavigate();
     useEffect(() => {
         const obtenerChatsPersonales = async () => {
             try {
@@ -53,7 +54,6 @@ const ChatPersonal = () => {
         };
         obtenerUsuario()
     }, [params.id]);
-
     function handlePress(event) {
         if (event.key === 'Enter') {
             const enviarMensaje = async () => {
@@ -78,13 +78,15 @@ const ChatPersonal = () => {
             };
             enviarMensaje()
             document.getElementById('inputMensaje').value = ""
-            this.forceUpdate();
+            navigate(0)
         }
     }
     return (
         <div>
             <div className='flex justify-between md:justify-around text-center'>
-                <ArrowBackIcon fontSize="large" />
+                <Link to="/admin">
+                    <ArrowBackIcon fontSize="large" />
+                </Link>
                 {/* <h1 className='text-3xl md:text-5xl'>{chat.nombreChat}</h1> */}
                 {usuario.map((chat) => (
                     chat._id === params.id
