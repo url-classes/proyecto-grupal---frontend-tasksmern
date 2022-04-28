@@ -18,8 +18,10 @@ const CrearChat = () => {
     }
     return (
         <div>
-            <div className='text-center'>
-                <h1 className='text-3xl md:text-5xl '>Crear Chat</h1>
+            <div>
+                <div className='text-center'>
+                    <h1 className='text-3xl md:text-5xl '>Crear Chat</h1>
+                </div>
                 <div className="text-sm font-medium text-center text-gray-500">
                     <ul className="flex flex-wrap -mb-px flex justify-around">
                         <li className="mr-2">
@@ -34,7 +36,6 @@ const CrearChat = () => {
                 </div>
                 <Outlet />
             </div>
-
         </div>
     )
 }
