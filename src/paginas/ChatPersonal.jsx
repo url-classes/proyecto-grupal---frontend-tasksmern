@@ -97,22 +97,24 @@ const ChatPersonal = () => {
 
                 <EditIcon fontSize="large" />
             </div>
-            <div className='my-3 md:my-5 bg-slate-200 contenido rounded-lg flex flex-col justify-end'>
-                {chats.map((chat) => (
-                    <div>
-                        {auth.nombre == chat.emisor.nombre
-                            ? <div className='flex justify-end'>
-                                <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'>
+            <div className='my-3 md:my-5 bg-slate-200 contenido rounded-lg flex flex-col justify-end overflow-auto'>
+                <div className='overflow-y-auto'>
+                    {chats.map((chat) => (
+                        <div>
+                            {auth.nombre == chat.emisor.nombre
+                                ? <div className='flex justify-end'>
+                                    <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'>
+                                        <AccountCircleIcon />{chat.contenido}
+                                        <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-emerald-500 -mt-8'>{chat.emisor.nombre}</span>
+                                    </div>
+                                </div>
+                                : <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'>
                                     <AccountCircleIcon />{chat.contenido}
                                     <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-emerald-500 -mt-8'>{chat.emisor.nombre}</span>
-                                </div>
-                            </div>
-                            : <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'>
-                                <AccountCircleIcon />{chat.contenido}
-                                <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-emerald-500 -mt-8'>{chat.emisor.nombre}</span>
-                            </div>}
-                    </div>
-                ))}
+                                </div>}
+                        </div>
+                    ))}
+                </div>
                 <input placeholder='Escribe un mensaje...' className='my-1 md:my-2 py-1 md:py-2 mx-2 md:mx-4 px-2 md:px-4 rounded-lg bg-slate-300 h-12 input-texto' onKeyPress={handlePress} id="inputMensaje"></input>
             </div>
         </div >
