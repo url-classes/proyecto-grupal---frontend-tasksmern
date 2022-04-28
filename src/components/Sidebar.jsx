@@ -3,6 +3,7 @@ import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
 import useAuth from "../hooks/useAuth";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -68,6 +69,9 @@ const Sidebar = () => {
     obtenerChats()
   }, []);
   const { auth } = useAuth();
+
+  const letraInicial = auth.nombre[0]
+  const primeraLetra = letraInicial.split(' ')
   return (
     <aside className="md:w-1/3 lg:w-1/5 xl:w-1/6 px-5 py-1 bg-slate-500 text-white">
       <div className="text-sm px-5 pt-1 pb-2 w-full md:w-auto rounded-lg uppercase font-bold
@@ -79,7 +83,7 @@ const Sidebar = () => {
             variant="dot"
 
           >
-            <Avatar alt="Remy Sharp" src="" sx={{ width: 80, height: 80 }} />
+            <Avatar alt="" src={auth.imagen} sx={{ width: 80, height: 80, bgcolor: deepOrange[500] }} >{primeraLetra}</Avatar>
           </StyledBadge>
         </Stack>
       </div>

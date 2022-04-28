@@ -38,7 +38,7 @@ const EditarPerfil = () => {
     <article className="bg-[#1C1F4A] row-span-2 rounded-lg overflow-hidden text-white">
       <section className="overflow-hidden p-4 bg-[#5847EB] text-white rounded-lg">
         <img
-          src="https://png.pngtree.com/png-vector/20190625/ourlarge/pngtree-business-male-user-avatar-vector-png-image_1511454.jpg"
+          src={auth.imagen}
           alt=""
           className="rounded-full border-4 border-gray-400 w-16 mb-7"
         />
@@ -173,11 +173,34 @@ const EditarPerfil = () => {
           <div className="relative z-0 mb-6 w-full group">
             <input
               type="text"
+              name="imagen"
+              id="floating_repeat_password"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              value={perfil.imagen || ""}
+              onChange={(e) =>
+                setPerfil({
+                  ...perfil,
+                  [e.target.name]: e.target.value,
+                })
+              }
+            />
+            <label
+              htmlFor="floating_repeat_password"
+              className="absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Link de la imagen
+            </label>
+          </div>
+
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="text"
               name="email"
               id="floating_repeat_password"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
-              value={perfil.email || ""}
+              value={perfil.email}
               onChange={(e) =>
                 setPerfil({
                   ...perfil,
