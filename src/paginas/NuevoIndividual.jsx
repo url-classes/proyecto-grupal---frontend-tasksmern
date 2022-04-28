@@ -108,9 +108,9 @@ const NuevoIndividual = () => {
                     <div className='w-fit rounded-lg py-2 my-2 px-2' onClick={handleChat} onMouseEnter={handleEstilo} onMouseLeave={handleQuitarEstilo} key={usuario._id}>{usuario.email}</div>
                 ))
             }</div>
-            <button id="CrearChat" className='bg-indigo-600 text-white px-10 py-3 rounded-lg mt-4' onClick={handleEnviarChat}>Crear Chat</button>
+            <button id="CrearChat" className='bg-indigo-600 text-white px-10 py-3 rounded-lg mt-4 my-4' onClick={handleEnviarChat}>Crear Chat</button>
             {usuarioSeleccionado != ""
-                ? <span className='px-2 md:px-4 py-2 bg-indigo-200 rounded-lg mx-2'>{usuarioSeleccionado}</span>
+                ? <span className='px-2 md:px-4 py-2 block md:inline bg-indigo-200 rounded-lg mx-2'>{usuarioSeleccionado}</span>
                 : null
             }
             {msg && <Alerta alerta={alerta} />}
