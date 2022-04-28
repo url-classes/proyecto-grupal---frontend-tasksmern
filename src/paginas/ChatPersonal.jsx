@@ -97,8 +97,15 @@ const ChatPersonal = () => {
                                 : <h1 className='text-3xl md:text-5xl' key={params.id} >{chat.usuarios[1].nombre} </h1>
                         : null
                 ))}
+                {usuario.map((chat) => (
+                    chat._id === params.id
+                        ? chat.esChatGrupal === true
+                            ? <EditIcon fontSize="large" key={params.id} />
+                            : <div key={params.id} ></div>
+                        : null
+                ))}
+                {/* <EditIcon fontSize="large" /> */}
 
-                <EditIcon fontSize="large" />
             </div>
             <div className='mt-3 md:mt-5 bg-slate-200 contenido rounded-lg flex flex-col justify-end'>
                 {/* overflow-y-auto */}
@@ -109,7 +116,6 @@ const ChatPersonal = () => {
                                 ? <div className='flex justify-end'>
                                     <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'  >
                                         <AccountCircleIcon />{chat.contenido}
-                                        <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-emerald-500'>{chat.emisor.nombre}</span>
                                     </div>
                                 </div>
                                 : <div className='mx-2 md:mx-4 px-1 md:px-2 py-1 md:py-2 flex has-tooltip box-chat'  >

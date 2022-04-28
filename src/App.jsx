@@ -22,6 +22,9 @@ import Perfil from "./paginas/Perfil";
 import CambiarPassword from "./paginas/CambiarPassword";
 import NuevoColaborador from "./paginas/NuevoColaborador";
 import ChatPersonal from "./paginas/ChatPersonal";
+import CrearChat from "./paginas/CrearChat";
+import ChatIndividual from "./paginas/ChatIndividual";
+import ChatGrupal from "./paginas/ChatGrupal";
 function App() {
   return (
     <BrowserRouter>
@@ -50,6 +53,10 @@ function App() {
               <Route path=":id" element={<Proyecto />} />
               <Route path="editar/:id" element={<EditarProyecto />} />
               <Route path="chat/:id" element={<ChatPersonal />} />
+              <Route path="CrearChat" element={<CrearChat />}>
+                <Route path="ChatIndividual" element={<ChatIndividual />} />
+                <Route path="ChatGrupal" element={<ChatGrupal />} />
+              </Route>
             </Route>
           </Routes>
         </ProyectosProvider>

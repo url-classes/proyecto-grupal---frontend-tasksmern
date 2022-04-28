@@ -98,7 +98,7 @@ const Sidebar = () => {
       <div>
         <div className="flex justify-between items-center">
           <h1 className="text-2xl py-4">Mis chats</h1>
-          <AddCommentIcon />
+          <Link to="/admin/CrearChat"><AddCommentIcon /></Link>
         </div>
         {/* <h1 className="text-xl">{chat.nombreChat}</h1> */}
         {chats.map(chat => (
