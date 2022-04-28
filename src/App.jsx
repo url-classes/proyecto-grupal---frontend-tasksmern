@@ -23,8 +23,8 @@ import CambiarPassword from "./paginas/CambiarPassword";
 import NuevoColaborador from "./paginas/NuevoColaborador";
 import ChatPersonal from "./paginas/ChatPersonal";
 import CrearChat from "./paginas/CrearChat";
-import ChatIndividual from "./paginas/ChatIndividual";
-import ChatGrupal from "./paginas/ChatGrupal";
+import NuevoIndividual from "./paginas/NuevoIndividual.jsx"
+import NuevoGrupal from "./paginas/NuevoGrupal.jsx"
 function App() {
   return (
     <BrowserRouter>
@@ -52,11 +52,11 @@ function App() {
               <Route path="Cambiar-Password" element={<CambiarPassword />} />
               <Route path=":id" element={<Proyecto />} />
               <Route path="editar/:id" element={<EditarProyecto />} />
-              <Route path="chat/:id" element={<ChatPersonal />} />
-              <Route path="CrearChat" element={<CrearChat />}>
-                <Route path="ChatIndividual" element={<ChatIndividual />} />
-                <Route path="ChatGrupal" element={<ChatGrupal />} />
+              <Route path="CrearChat/" element={<CrearChat />}>
+                <Route path="NuevoIndividual" element={<NuevoIndividual />} />
+                <Route path="NuevoGrupal" element={<NuevoGrupal />} />
               </Route>
+              <Route path="chat/:id" element={<ChatPersonal />} />
             </Route>
           </Routes>
         </ProyectosProvider>
