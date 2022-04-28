@@ -109,7 +109,10 @@ const NuevoIndividual = () => {
                 ))
             }</div>
             <button id="CrearChat" className='bg-indigo-600 text-white px-10 py-3 rounded-lg mt-4' onClick={handleEnviarChat}>Crear Chat</button>
-            <span className='px-4 md:px-6'>{usuarioSeleccionado}</span>
+            {usuarioSeleccionado != ""
+                ? <span className='px-2 md:px-4 py-2 bg-indigo-200 rounded-lg mx-2'>{usuarioSeleccionado}</span>
+                : null
+            }
             {msg && <Alerta alerta={alerta} />}
         </div >
     )
