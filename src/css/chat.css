@@ -1,0 +1,6 @@
+.box {
+    background-color: #8195B3;
+    @apply my-4 px-1 py-1;
+    @apply rounded-lg;
+    @apply cursor-pointer;
+}

@@ -41,6 +41,7 @@ const AuthProvider = ({ children }) => {
 
   const cerrarSesion = () => {
     localStorage.removeItem("token");
+    localStorage.clear();
     setAuth({});
   };
 
