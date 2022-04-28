@@ -100,13 +100,20 @@ const Sidebar = () => {
           <h1 className="text-2xl py-4">Mis chats</h1>
           <AddCommentIcon />
         </div>
-        {chats.map(chat =>
+        {/* <h1 className="text-xl">{chat.nombreChat}</h1> */}
+        {chats.map(chat => (
           <div key={chat._id} className='box'>
             <Link to={`/admin/chat/${chat._id}`}>
-              <h1 className="text-xl">{chat.nombreChat}</h1>
+              {
+                chat.esChatGrupal === true
+                  ? <h1 className='text-xl'>{chat.nombreChat}</h1>
+                  : chat.usuarios[0].nombre != auth.nombre
+                    ? <h1 className='text-xl'>{chat.usuarios[0].nombre}</h1>
+                    : <h1 className='text-xl'>{chat.usuarios[1].nombre}</h1>
+              }
             </Link>
-          </div>)
-        }
+          </div>
+        ))}
       </div>
     </aside>
   );

@@ -5,10 +5,12 @@ import '../css/chatPersonal.css'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useParams } from 'react-router-dom'
 import clienteAxios from "../config/axios";
-
+import useAuth from "../hooks/useAuth";
 const ChatPersonal = () => {
     const params = useParams()
     const [chats, setChats] = useState([])
+    const [usuario, setUsuario] = useState([])
+    const { auth } = useAuth();
     useEffect(() => {
         const obtenerChatsPersonales = async () => {
             try {
@@ -29,14 +31,44 @@ const ChatPersonal = () => {
             }
         };
         obtenerChatsPersonales()
+
+        const obtenerUsuario = async () => {
+            try {
+                const token = localStorage.getItem("token");
+                if (!token) return;
+
+                const config = {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                };
+
+                const { data } = await clienteAxios.get(`/chat`, config);
+                setUsuario(data)
+                console.log(data)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        obtenerUsuario()
     }, [params.id]);
+    console.log("El nombre es ", auth.nombre)
     return (
         <div>
-            <div className='flex justify-between md:justify-around'>
+            <div className='flex justify-between md:justify-around text-center'>
                 <ArrowBackIcon fontSize="large" />
-                <h1 className='text-3xl md:text-5xl'>
-                    Doug
-                </h1>
+                {/* <h1 className='text-3xl md:text-5xl'>{chat.nombreChat}</h1> */}
+                {usuario.map((chat) => (
+                    chat._id === params.id
+                        ? chat.esChatGrupal === true
+                            ? <h1 className='text-3xl md:text-5xl'>{chat.nombreChat}</h1>
+                            : chat.usuarios[0].nombre != auth.nombre
+                                ? <h1 className='text-3xl md:text-5xl'>{chat.usuarios[0].nombre}</h1>
+                                : <h1 className='text-3xl md:text-5xl'>{chat.usuarios[1].nombre}</h1>
+                        : null
+                ))}
+
                 <EditIcon fontSize="large" />
             </div>
             <div className='my-3 md:my-5 bg-slate-200 contenido rounded-lg flex flex-col justify-end'>
