@@ -1,0 +1,8 @@
+.activar {
+    @apply inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600;
+}
+
+.apagado {
+    @apply inline-block p-4 rounded-t-lg border-b-2 border-b-2 border-transparent;
+    @apply hover:text-gray-600 hover:border-gray-300;
+}
