@@ -53,7 +53,33 @@ const ChatPersonal = () => {
         };
         obtenerUsuario()
     }, [params.id]);
-    console.log("El nombre es ", auth.nombre)
+
+    function handlePress(event) {
+        if (event.key === 'Enter') {
+            const enviarMensaje = async () => {
+                try {
+                    const token = localStorage.getItem("token");
+                    if (!token) return;
+                    let bodyContent = {
+                        "contenido": `${document.getElementById('inputMensaje').value}`,
+                        "chatId": `${params.id}`,
+                    }
+                    const config = {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    };
+
+                    const { data } = await clienteAxios.post(`/mensajes/`, bodyContent, config);
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+            enviarMensaje()
+            document.getElementById('inputMensaje').value = ""
+        }
+    }
     return (
         <div>
             <div className='flex justify-between md:justify-around text-center'>
@@ -87,7 +113,7 @@ const ChatPersonal = () => {
                             </div>}
                     </div>
                 ))}
-                <input placeholder='Escribe un mensaje...' className='my-1 md:my-2 py-1 md:py-2 mx-2 md:mx-4 px-2 md:px-4 rounded-lg bg-slate-300 h-12 input-texto'></input>
+                <input placeholder='Escribe un mensaje...' className='my-1 md:my-2 py-1 md:py-2 mx-2 md:mx-4 px-2 md:px-4 rounded-lg bg-slate-300 h-12 input-texto' onKeyPress={handlePress} id="inputMensaje"></input>
             </div>
         </div >
     )
